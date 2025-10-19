@@ -4,4 +4,9 @@ version = "0.1.0"
 description = "TBA"
 authors = [ ]
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "google-api-python-client>=2.185.0",
+    "google-auth>=2.41.1",
+    "google-auth-httplib2>=0.2.0",
+    "google-auth-oauthlib>=1.2.2",
+]
