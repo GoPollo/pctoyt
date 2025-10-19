@@ -7,7 +7,7 @@ import os
 SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
 
 def youtube_authenticate():
-    flow = InstalledAppFlow.from_client_secrets_file("client_secret.json", SCOPES)
+    flow = InstalledAppFlow.from_client_secrets_file("client_secrets.json", SCOPES)
     credentials = flow.run_local_server(port=0)
     return build("youtube", "v3", credentials=credentials)
 
@@ -22,7 +22,7 @@ def upload_video(file_path, title, description, category_id="22", keywords=""):
             "tags": keywords.split(",") if keywords else []
         },
         "status": {
-            "privacyStatus": "public"  # or "private" or "unlisted"
+            "privacyStatus": "private"  # or "private" or "unlisted"
         }
     }
 
@@ -43,9 +43,19 @@ def upload_video(file_path, title, description, category_id="22", keywords=""):
     print(f"Video ID: {response['id']}")
 
 # Example usage
-upload_video(
-    file_path="example.mp4",
-    title="My API Uploaded Video",
-    description="This video was uploaded using the YouTube Data API!",
-    keywords="api,python,youtube"
-)
+
+# Method 1: Using glob (recommended)
+from glob import glob
+
+mp4_files = glob("*.mp4")  # Current directory
+
+mp4_files = [f for f in os.listdir() if f.endswith('.mp4')]
+
+# Print the files
+for file in mp4_files:
+    upload_video(
+        file_path=file,
+        title=file,
+        description=file,
+        keywords=""
+    )
