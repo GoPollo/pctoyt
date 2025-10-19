@@ -43,9 +43,19 @@ def upload_video(file_path, title, description, category_id="22", keywords=""):
     print(f"Video ID: {response['id']}")
 
 # Example usage
-upload_video(
-    file_path="example.mp4",
-    title="My API Uploaded Video",
-    description="This video was uploaded using the YouTube Data API!",
-    keywords="api,python,youtube"
-)
+
+# Method 1: Using glob (recommended)
+from glob import glob
+
+mp4_files = glob("*.mp4")  # Current directory
+
+mp4_files = [f for f in os.listdir() if f.endswith('.mp4')]
+
+# Print the files
+for file in mp4_files:
+    upload_video(
+        file_path=file,
+        title=file,
+        description=file,
+        keywords=""
+    )
