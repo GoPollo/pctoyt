@@ -7,7 +7,7 @@ import os
 SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
 
 def youtube_authenticate():
-    flow = InstalledAppFlow.from_client_secrets_file("client_secret.json", SCOPES)
+    flow = InstalledAppFlow.from_client_secrets_file("client_secrets.json", SCOPES)
     credentials = flow.run_local_server(port=0)
     return build("youtube", "v3", credentials=credentials)
 
