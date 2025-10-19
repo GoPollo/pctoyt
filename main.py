@@ -22,7 +22,7 @@ def upload_video(file_path, title, description, category_id="22", keywords=""):
             "tags": keywords.split(",") if keywords else []
         },
         "status": {
-            "privacyStatus": "public"  # or "private" or "unlisted"
+            "privacyStatus": "private"  # or "private" or "unlisted"
         }
     }
 
