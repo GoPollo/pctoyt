@@ -1,7 +1,7 @@
 [project]
-name = "python-package"
+name = "pctoyt"
 version = "0.1.0"
-description = "Add your description here"
+description = "TBA"
 authors = [ ]
 requires-python = ">=3.13"
 dependencies = []
